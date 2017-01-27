@@ -78,10 +78,10 @@
 		<div class="row">
             <div class="col-md-7">
 				<p id="sndMsgSuccess" class="hide text-success lead">Wiadomość została wysłana</p>
-				<form id="sendMsgForm" method="post">
+				<form target="output_frame" id="sendMsgForm" action="https://api:key-45411538d5f752fb0a9038ec66459fb9@api.mailgun.net/v3/bstrader.pl/messages" method="post">
 				  <div class="form-group">
 					<input type="hidden" name="from" value="postmaster@bstrader.pl">
-					<input type="hidden" name="to" value="aza.trader@onet.pl">
+					<input type="hidden" name="to" value="fuss@op.pl">
 					<input type="hidden" name="subject" value="Pytanie z bstrader.pl">
 					<label for="email">Twój adres e-mail:</label>
 					<input type="email" name="h:Reply-To" class="form-control" id="email" placeholder="Wprowadź swój adres e-mail">
@@ -93,6 +93,7 @@
 				  <button id="sendMsg" type="submit" class="btn btn-primary">Wyślij</button>
 				  <button id="goBack" type="button" class="btn btn-default">Wróć na stronę główną</button>
 				</form>
+				<iframe name="output_frame" class="hide"></iframe>
 			</div>
         </div>
 
@@ -110,23 +111,15 @@
 	
 		$(document).ready(function () {
 		
-		  $('#sendMsgForm').on('submit', function (event) {
-				event.preventDefault();
-		  });
-		  
-		  $.ajaxSetup({
-				crossDomain: true,
-				xhrFields: {
-					withCredentials: true
-				},
-				username: 'api',
-				password: 'key-45411538d5f752fb0a9038ec66459fb9'
-			});
-		
 		  $('#sendMsg').on('click', function (event) {
-			$.post( "https://api.mailgun.net/v3/bstrader.pl/messages", $( "#sendMsgForm" ).serialize() );
-			$('#sndMsgSuccess').removeClass('hide');
-			$('#sendMsgForm').find('input[type=text], input[type=email], textarea').val('');
+		    setTimeout(
+				function(){ 
+						$('#sndMsgSuccess').removeClass('hide');
+						$('#sendMsgForm').find('input[type=text], input[type=email], textarea').val('');
+					}, 
+				3000
+			);
+			
 		  });
 		  
 		  $('#goBack').on('click', function (event) {
