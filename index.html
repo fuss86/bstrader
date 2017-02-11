@@ -386,9 +386,9 @@
 		
 		  function changeMainImg() {
 		    wizNo = ((wizNo+1)%6);
-			$('img#wizualizacja').fadeOut(300, function(){
+			$('img#wizualizacja').fadeOut(500, function(){
 				$(this).attr('src','img/wizualizacja'+wizNo+'.jpg').bind('onreadystatechange load', function(){
-					 if (this.complete) $(this).fadeIn(300);
+					 if (this.complete) $(this).fadeIn(400);
 				  });
 			});
 		  };
