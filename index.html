@@ -380,17 +380,16 @@
 	
 	<script>
 	
-		var wizNo = 0;
+		var wizNo = 1;
 	
 		$(document).ready(function () {
 		
 		  function changeMainImg() {
 		    wizNo = ((wizNo+1)%6);
-			console.log(wizNo);
-			var image = $("img#wizualizacja");
-			image.fadeOut(500, function () {
-				image.attr('src', 'img/wizualizacja'+wizNo+'.jpg');
-				image.fadeIn(500);
+			$('img#wizualizacja').fadeOut(300, function(){
+				$(this).attr('src','img/wizualizacja'+wizNo+'.jpg').bind('onreadystatechange load', function(){
+					 if (this.complete) $(this).fadeIn(300);
+				  });
 			});
 		  };
 		  
