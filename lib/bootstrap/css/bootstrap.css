@@ -440,6 +440,11 @@ mark,
   background-color: #fcf8e3;
 }
 
+.list-square {
+  list-style: square;
+  padding-left: 0;
+}
+
 .list-unstyled {
   padding-left: 0;
   list-style: none;
